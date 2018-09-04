@@ -1,0 +1,114 @@
+<p id="notice"><%= notice %></p>
+
+<div class="title"><%= @page_title = "My Contacts" %></div>
+<div class="btnNew"><%= link_to 'New Contact', new_contact_path %></div>
+
+
+<div class="filter">
+  <div class="letters">
+    <ul>
+      <li style="margin: 0 ; padding-right: 2%;"><a href="<%= url_for contacts_path %>?favorites=1"><div class="favoriteFilter"></div>Favourite</a></li>
+      <% letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+         letters.each_char do |c|
+      %>
+          <li><a href="<%= url_for contacts_path %>?filterLetter=<%=c%>" title="contacts starting with letter <%=c%>"><%=c%></a></li>
+      <% end %>
+      <li><a href="<%= url_for contacts_path %>?filterNumber=1" title="contacts starting with numbers">0/9</a></li>
+      <li style="    padding-left: 2%;padding-right: 3%;"><a href="<%= url_for contacts_path %>">Clear Filter</a></li>
+    </ul>
+  </div>
+  <div class="advanced">
+    <form action"" method="GET">
+    <input type="text" name="q" value="<%= request.GET['q'] %>" />
+    <input type="submit" value="Ok" style="width: 50px;" />
+    </form>
+  </div>
+  <div class="clear"></div>
+</div>
+
+
+<div>
+    <div style="background-color: #f2f2f2">
+      <div class="row" style="padding: 10px 15px;">
+        <div class="custom_top_pagination" style="float: left;">
+          <%= will_paginate @contacts, next_label: '>', previous_label: '<' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" style="padding:0px 15px;">
+      <table class="table table-hover" style="border-spacing: 0px 6px;border-collapse: separate;">
+            <thead>
+              <tr style="background-color: white;">
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Cell</th>
+                <th>Des</th>
+                <th>Birthdate</th>
+                <th>Group</th>
+                <th>User</th>
+                <th>Street</th>
+                <th>City</th>
+                <th>Zipcode</th>
+                <th>Img url</th>
+                <th>Country</th>
+                <th colspan="3"></th>
+              </tr>
+            </thead>
+
+            <tbody>
+            <% @contacts.each do |contact| %>
+                <tr style="background-color: white;">
+                  <td><%= contact.name %></td>
+                  <td><%= contact.email %></td>
+                  <td><%= contact.phone %></td>
+                  <td><%= contact.cell %></td>
+                  <td><%= contact.des %></td>
+                  <td><%= contact.birthdate %></td>
+                  <td><%= contact.group_id %></td>
+                  <td><%= contact.user_id %></td>
+                  <td><%= contact.street %></td>
+                  <td><%= contact.city %></td>
+                  <td><%= contact.zipcode %></td>
+                  <td><%= contact.img_url %></td>
+                  <td><%= contact.country %></td>
+                  <td><%= link_to 'Show', contact %></td>
+                  <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
+                  <td><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
+    </div>
+  </div>
+
+
+<style>
+  ul {
+    list-style-type: none;
+  }
+
+    li {
+      float: left;
+    }
+
+  table td{
+    border-style: solid;
+    border-width: thin;
+    border-color: #9e9e9e21;
+    vertical-align: middle !important;
+    width:100px;
+    font-size: 14px;
+    text-align:center;
+  }
+  table th{
+    vertical-align: bottom !important;
+    border-style: solid;
+    border-width: thin;
+    border-color: #9e9e9e21;
+    width:100px;
+    font-size: 14px;
+    text-align:center;
+  }
+</style>

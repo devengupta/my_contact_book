@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @contact.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @contact.email %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @contact.phone %>
+</p>
+
+<p>
+  <strong>Cell:</strong>
+  <%= @contact.cell %>
+</p>
+
+<p>
+  <strong>Des:</strong>
+  <%= @contact.des %>
+</p>
+
+<p>
+  <strong>Birthdate:</strong>
+  <%= @contact.birthdate %>
+</p>
+
+<p>
+  <strong>Group:</strong>
+  <%= @contact.group_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @contact.user_id %>
+</p>
+
+<p>
+  <strong>Street:</strong>
+  <%= @contact.street %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @contact.city %>
+</p>
+
+<p>
+  <strong>Zipcode:</strong>
+  <%= @contact.zipcode %>
+</p>
+
+<p>
+  <strong>Img url:</strong>
+  <%= @contact.img_url %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @contact.country %>
+</p>
+
+<%= link_to 'Edit', edit_contact_path(@contact) %> |
+<%= link_to 'Back', contacts_path %>

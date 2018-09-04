@@ -1,0 +1,80 @@
+<%= form_with(model: contact, local: true) do |form| %>
+  <% if contact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+
+      <ul>
+      <% contact.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :contact_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email, id: :contact_email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone %>
+    <%= form.text_field :phone, id: :contact_phone %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cell %>
+    <%= form.text_field :cell, id: :contact_cell %>
+  </div>
+
+  <div class="field">
+    <%= form.label :des %>
+    <%= form.text_area :des, id: :contact_des %>
+  </div>
+
+  <div class="field">
+    <%= form.label :birthdate %>
+    <%= form.date_select :birthdate, id: :contact_birthdate %>
+  </div>
+
+  <div class="field">
+    <%= form.label :group_id %>
+    <%= form.select :group_id,options_for_select(Group.all.collect {|p| [ p.name, p.id ] }, { include_blank: true }) ,id: :contact_group_id %>
+  </div>
+  <div class="field">
+    <%= form.label :street %>
+    <%= form.text_field :street, id: :contact_street %>
+  </div>
+
+  <div class="field">
+    <%= form.label :city %>
+    <%= form.text_field :city, id: :contact_city %>
+  </div>
+
+  <div class="field">
+    <%= form.label :zipcode %>
+    <%= form.text_field :zipcode, id: :contact_zipcode %>
+  </div>
+
+  <div class="field">
+    <%= form.label :img_url %>
+    <%= form.text_field :img_url, id: :contact_img_url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :country %>
+    <%= form.text_field :country, id: :contact_country %>
+  </div>
+    <div class="field">
+      <%= form.label :favourites %>
+      <%= form.check_box :favorites, id: :fav %>
+    </div>
+
+
+    <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
